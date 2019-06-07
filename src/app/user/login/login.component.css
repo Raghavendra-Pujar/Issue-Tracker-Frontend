@@ -1,0 +1,89 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 3rem 2rem rgba(121, 113, 113, 0.1);
+  margin: 1rem;
+}
+
+.card-signin .card-title {
+  margin-bottom: 5rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+  font-family: 'Maven Pro',sans-serif;
+  display: block;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-signin input{
+  border-radius: 2rem;
+  outline: none;
+  background-color: aliceblue;
+}
+
+
+
+.btn-custom{
+  background-color: #b5892d;
+}
+
+
+.btn-google {
+  color: white;
+  background-color: #e75143;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+.text-desc{
+  padding: 0.5em;
+  padding-left: 5em;
+  color: #0c0c0c;
+  font-family: 'Maven+Pro', sans-serif;
+}
+
+.text-center{
+  font-family: 'Merriweather', serif;
+  color: #050505;
+}
+
+.heading{
+font-size: 5em;
+color: rgb(10, 10, 10);
+line-height: 1.2;
+text-align: center;  
+font-family : 'PT Sans', sans-serif;
+display: block;
+position: relative;
+width: 100%;
+top: 0;
+left: 0;
+background-color: #b5892d;
+padding-top: 20px;
+padding-bottom: 20px;
+text-transform: uppercase;
+}

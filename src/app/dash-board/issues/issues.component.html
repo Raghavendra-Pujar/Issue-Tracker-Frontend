@@ -1,0 +1,61 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+<h1 class="lead text-info">Raise an Issue here</h1>
+<button type="button" class="btn btn-outline-warning btn-lg btn-block" [routerLink]= "['/issue']">Raise Issue</button>
+<br>
+
+<h1>{{message}}</h1>
+
+<nav class="navbar">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchedValue">      
+</nav>
+
+<table class="table table-hover table-bordered">
+  <thead class="thead thead-dark fixed">
+    <tr>
+      <th scope="col" (click)="sort('status')">Status
+        <i class="fa fa-chevron-up" *ngIf="key == 'status' && reverse === false" ></i>
+        <i class="fa fa-chevron-down" *ngIf="key == 'status' && reverse === true"></i>
+      </th>
+     
+      <th scope="col" (click)="sort('title')">Title
+        <i class="fa fa-chevron-up" *ngIf="key == 'title' && reverse === false" ></i>
+        <i class="fa fa-chevron-down" *ngIf="key == 'title' && reverse === true"></i>
+      </th>
+      
+      <th scope="col" (click)="sort('reporter')">Reporter
+        <i class="fa fa-chevron-up" *ngIf=" key == 'reporter' && reverse === false" ></i>
+        <i class="fa fa-chevron-down" *ngIf=" key == 'reporter' && reverse === true"></i>
+      </th>
+      <th scope="col" (click)="sort('date')">Date
+        <i class="fa fa-chevron-up" *ngIf=" key == 'date' && reverse === false" ></i>
+        <i class="fa fa-chevron-down" *ngIf=" key == 'date' && reverse === true"></i>
+      </th>
+
+    </tr>
+  </thead>
+
+  <tbody *ngIf = "issueList" class="table-striped ">
+   <tr class="table-default" [routerLink] = "['/issue',issue.issueId]" *ngFor = "let issue of issueList | orderBy: key : reverse | filter : searchedValue">
+      <td>{{issue.status}}</td>
+      <td>{{issue.title}}</td>
+      <td>{{issue.reporter.userName}}</td>
+      <td>{{issue.createdOn | date}}</td>
+
+      </tr>
+  </tbody>
+  </table>
+ <br> <br>
+ <div class="row" *ngIf="moreItems">
+    <div class="col-12 mb-3 mt-2">
+      <button class="btn btn-secondary" type="button" (click)='listMoreIssues()' value="Load More"> View More</button>
+    </div>
+  </div>
+  </div>
+
+
+
+

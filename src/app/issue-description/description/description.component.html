@@ -1,0 +1,126 @@
+<script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+
+<div class="conatiner">
+<br>
+<div *ngIf="issue;else noIssue" id="issueConetent">
+  
+  <div class="container card mx-auto">
+
+  <div class="card-header">
+      <p>Reporter:  {{issue.reporter.userName}} </p>
+
+      <p>Issue was Assigned to {{issue.assignee.userName}} </p>
+  
+      <p>Issue was logged on {{issue.createdOn | date}} </p>
+  </div>
+
+
+  <div class="card-body">
+
+    <div class="title card-title">
+      <h3>{{issue.title}}</h3>
+    </div>
+
+    <div class="card-text" [innerHTML]="issue.description"></div>
+    <div class="card-text">
+      Status : {{issue.status}}
+    </div>
+  
+  </div>
+ <div class="card-footer">
+    <button  type = "button"  class="btn btn-info btn-md" [routerLink]="['/edit',issue.issueId]" id="editbtn">Edit</button>
+    <button class="btn btn-primary btn-md" (click) = "addWatcher()"> Watch</button>
+ </div>
+
+</div>
+
+  <div class="container card">
+    <div class="form-group">
+      <label  id = "commentTextLabel" for="commentTextArea" style="font-display:bold;">Comments</label>
+      <div class="card card-body" *ngIf = "comments else noComments">
+          <table class="table table ">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Commentor</th>
+                  <th scope="col">comments</th>
+                </tr>
+              </thead>
+
+              <tbody *ngIf = "comments" class="table-striped ">
+                  <tr class="table-default" *ngFor = "let comment of comments">
+                     <td id = "commentor">{{comment.commentor.userName}}</td>
+                     <td id="commentText">{{comment.comment}}</td>
+                     </tr>
+                 </tbody>
+                 </table>
+        <div *ngFor = "let comment of comments">
+          
+        </div>
+      </div>
+      <ng-template #noComments>
+      <div>{{message}}</div>
+      </ng-template>
+      <form>
+        <br>
+      <button type = "submit" class="btn btn-lg btn-info" style="float:right;" (click) = "postComment()">Post</button>
+      <textarea class="form-control" name = "comment" [(ngModel)] = "commentText"id="commentTextArea" rows="3" spellcheck="false"  placeholder="Enter your comment here"></textarea>
+      </form>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<ng-template #noIssue>
+
+  <div class="container">
+
+<form>
+  <div class="form-group">
+    <label class="form-control-label" for="title">Title</label>
+    <input type="text" value="" name = "title" class="form-control is-valid" id="title" [(ngModel)]="title"
+    required>
+  </div>
+
+
+  <div class="form-group">
+    <label class="form-control-label" for="">Assignee Email</label>
+    <input type="text" value="" name = "assigneeEmail" class="form-control" id="assigneeEmail" [(ngModel)]="assignee"
+      (focusout)="verifyEmail()" required>
+
+    <span class="user-availability-status"></span>
+
+
+
+  </div>
+
+  <div class="form-group">
+    <label class="form-control-label" for="inputSuccess1">Description</label>
+    <ckeditor [(ngModel)]="description" name = "description"required>
+
+    </ckeditor>
+  </div>
+
+
+  <div class="form-group">
+    <label class="form-control-label" for="">Status of the code</label>
+    <select name="Status" id="" class="form-control" [(ngModel)]="status" required>
+      <option selected value=""  disabled > Select status</option>
+      <option value="backlog">backlog</option>
+      <option value="in-progress">in-progress</option>
+      <option value="in-test">in-test</option>
+      <option value="done">done</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <button type = "submit"class="btn btn-primary btn-lg" (click)="createIssue()">Submit</button>
+  </div>
+</form>
+</div>
+
+</ng-template>
+
+

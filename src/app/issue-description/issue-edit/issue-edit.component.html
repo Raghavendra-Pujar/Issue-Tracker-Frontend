@@ -1,0 +1,45 @@
+<div class="container">
+  
+   
+    
+    <div class="form-group">
+      <label class="form-control-label" for="">Title</label>
+      <input type="text" value="" class="form-control" id="" [(ngModel)] = "issue.title">
+    </div>
+    
+
+    <div class="form-group">
+        <label class="form-control-label" for="">Assignee Email</label>
+        <input type="text" value="" class="form-control" id="assigneeEmail" [(ngModel)] = "issue.assignee.email"
+        (focusout) ="verifyEmail()">
+
+        <span class="user-availability-status"></span>
+        
+       
+       
+    </div>
+ 
+      <div class="form-group">
+          <label class="form-control-label" for="inputSuccess1">Description</label>
+        <ckeditor [(ngModel)]="issue.description">
+            
+    </ckeditor>
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-control-label" for="">Status of the code</label>
+      <select name="Status" id="" class="form-control" [(ngModel)]="issue.status">
+      <option disabled> Selelct status</option>
+      <option value="backlog">backlog</option>
+      <option value="in-progress">in-progress</option>
+      <option value="in-test">in-test</option>
+      <option value="done">done</option>
+    </select>
+    </div>
+
+
+    <div class="form-group">
+    <button class="btn btn-primary btn-lg" (click) = "editIssueDetails()">Edit</button>
+    </div>
+  </div>

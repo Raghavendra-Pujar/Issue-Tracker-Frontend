@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="lead text-info">Raise an Issue here</h1>
+    <!--button type="button" class="btn btn-outline-warning btn-lg btn-block" [routerLink]= "['/issue']">Raise Issue</button-->
+    <br>
+    
+    <h1>Results related to {{searchText}}</h1>
+    <table class="table table-hover ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Status</th>
+          <th scope="col">Title</th>
+          <th scope="col">Reporter</th>
+          <th scope="col">Date</th>
+    
+        </tr>
+      </thead>
+    
+      <tbody *ngIf = "issueLists" class="table-striped ">
+       <tr class="table-default" [routerLink] = "['/issue',issue.issueId]" *ngFor = "let issue of issueLists" >
+          <td>{{issue.status}}</td>
+          <td>{{issue.title}}</td>
+          <td>{{issue.reporter.userName}}</td>
+          <td>{{issue.createdOn | date}}</td>
+    
+          </tr>
+      </tbody>
+      </table>
+     <br> <br>
+      </div>

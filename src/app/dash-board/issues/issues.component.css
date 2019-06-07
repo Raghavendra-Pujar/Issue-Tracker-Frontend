@@ -1,0 +1,13 @@
+
+
+.table-default{
+    cursor: pointer;
+}
+
+tbody :hover{
+    background-color: #b5892d;
+}
+
+thead>tr>th {
+    cursor: pointer;
+}
