@@ -3,6 +3,7 @@ import { ApiServiceService } from '../../api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+import { LoginCheckService } from '../../login-check.service';
 
 @Component({
   selector: 'app-issue-edit',
@@ -19,11 +20,14 @@ export class IssueEditComponent implements OnInit {
     showConfirmButton: false,
     timer: 3000
   })
-  constructor(public apiService :ApiServiceService,public route: ActivatedRoute , public router : Router) { }
+  constructor(public apiService :ApiServiceService,public route: ActivatedRoute , public router : Router,
+    public loginService : LoginCheckService) { }
 
   ngOnInit() {
     this.issueId = this.route.snapshot.paramMap.get('issueId');
-    this.viewDescription()
+    this.viewDescription();
+    this.loginService.checkStatus();
+
     
 
 }

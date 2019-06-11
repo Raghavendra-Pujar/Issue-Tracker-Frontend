@@ -6,6 +6,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { SocketService } from '../../socket.service';
 import { ToastrService } from 'ngx-toastr';
 import { Ng2OrderModule } from 'ng2-order-pipe'
+import { LoginCheckService } from '../../login-check.service';
 
 @Component({
   selector: 'app-issues',
@@ -33,7 +34,8 @@ export class IssuesComponent implements OnInit {
     timer: 3000
   });
 
-  constructor(public apiService : ApiServiceService, public router : Router,public socket : SocketService,private ref: ChangeDetectorRef,public toastr: ToastrService)
+  constructor(public apiService : ApiServiceService, public router : Router,public socket : SocketService,private ref: ChangeDetectorRef,public toastr: ToastrService,
+    public loginService : LoginCheckService)
    { 
     setInterval(() => {
       this.numberOfTicks++;
@@ -49,6 +51,7 @@ export class IssuesComponent implements OnInit {
     this.socket.authError();
     this.listenForComments();
     this.listenForEdit();
+    console.log(this.loginService.checkStatus());
 
    
   }

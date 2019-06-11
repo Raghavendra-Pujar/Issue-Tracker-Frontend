@@ -6,6 +6,7 @@ import * as $  from 'jquery';
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
 import { SocketService } from '../../socket.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { LoginCheckService } from '../../login-check.service';
 
 @Component({
   selector: 'app-description',
@@ -27,6 +28,7 @@ export class DescriptionComponent implements OnInit {
   public message;
   public commentText;
   public toolTip;
+  public loginStatus : Boolean;
   public Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -35,7 +37,8 @@ export class DescriptionComponent implements OnInit {
   })
 
    
-  constructor(public apiService: ApiServiceService, public route: ActivatedRoute , public router : Router,public socket : SocketService) { 
+  constructor(public apiService: ApiServiceService, public route: ActivatedRoute , public router : Router,public socket : SocketService,
+    public loginService : LoginCheckService) { 
    
 
   }
@@ -46,7 +49,10 @@ export class DescriptionComponent implements OnInit {
     this.viewComments()
     $("#loader").hide()
     if(this.issueId)
-    this.verifyEditer()
+    this.verifyEditer();
+    this.loginStatus = this.loginService.checkStatus();
+    console.log(this.loginStatus)
+
   }
 
   public viewDescription() {

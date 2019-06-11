@@ -22,6 +22,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider } from "angular4-social-login";
 import { Ng2OrderModule } from 'ng2-order-pipe'; 
+import { NotFoundComponent } from './not-found/not-found/not-found.component';
+import { NotFoundModule } from './not-found/not-found.module';
+import { LoginCheckService } from './login-check.service';
 
 let config = new AuthServiceConfig([
   {
@@ -44,6 +47,7 @@ let config = new AuthServiceConfig([
     DashBoardModule,
     SearchViewModule,
     IssueDescriptionModule,
+    NotFoundModule,
     CKEditorModule,
     Ng2OrderModule,
     SocialLoginModule.initialize(config),
@@ -55,10 +59,11 @@ let config = new AuthServiceConfig([
       {path : 'dashboard', component : DescriptionComponent, pathMatch : 'full'},
       { path :'issue', component : DescriptionComponent, pathMatch : 'full'},
       { path : 'search/:searchText', component : SearchComponent, pathMatch : 'full'},
+      {path:'**',component:NotFoundComponent},
       { path : '*', component: LoginComponent}
     ])
   ],
-  providers: [ApiServiceService,SocketService],
+  providers: [ApiServiceService,SocketService,LoginCheckService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

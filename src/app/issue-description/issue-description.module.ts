@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DescriptionComponent } from './description/description.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { WatcherComponent } from './watcher/watcher.component';
-import { IssueCreateComponent } from './issue-create/issue-create.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { IssueEditComponent } from './issue-edit/issue-edit.component';
 
@@ -21,6 +19,6 @@ import { IssueEditComponent } from './issue-edit/issue-edit.component';
     ])
 
   ],
-  declarations: [DescriptionComponent, WatcherComponent, IssueCreateComponent, IssueEditComponent]
+  declarations: [DescriptionComponent, IssueEditComponent]
 })
 export class IssueDescriptionModule { }
