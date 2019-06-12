@@ -22,7 +22,7 @@ export class ApiServiceService {
   }
 
 
-  public baseUrl = 'http://localhost:3000/api/v1';
+  public baseUrl = 'http://restapi.raghavendra-pujar.site/api/v1';
 
   constructor(private http : HttpClient) { }
 

@@ -70,7 +70,7 @@ export class DescriptionComponent implements OnInit {
     //let email = this.assignee;
     $.ajax({
       type: 'POST',
-      url : 'http://localhost:3000/api/v1/users/verifyEmail',
+      url : 'http://restapi.raghavendra-pujar.site/api/v1/users/verifyEmail',
       data: {email : this.assignee},
       dataType : "json",
       success :function(data){
@@ -79,7 +79,10 @@ export class DescriptionComponent implements OnInit {
         console.log(data)
         this.successfull = false;
       },  error:function (){
-        alert('error')
+        this.Toast.firin({
+          type : 'error',
+          title : 'Assignee not found'
+        })
       }
 
     })
@@ -89,7 +92,7 @@ export class DescriptionComponent implements OnInit {
     console.log('Reached here')
     $.ajax({
       type : 'POST',
-      url :'http://localhost:3000/api/v1/issue/verifyEditer',
+      url :'http://restapi.raghavendra-pujar.site/api/v1/issue/verifyEditer',
       data :{authToken : Cookie.get('authToken'),issueId : this.issueId},
       dataType : "json",
       success : function(data : any){
@@ -102,7 +105,10 @@ export class DescriptionComponent implements OnInit {
           
         }
       },error : function(){
-        alert('error')
+        this.Toast.firin({
+          type : 'error',
+          title : 'You are not authorized to edit this issue'
+        })
       }
     })
   }

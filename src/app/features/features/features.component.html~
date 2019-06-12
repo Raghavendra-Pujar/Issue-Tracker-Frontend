@@ -4,7 +4,7 @@
     <hr class="my-4">
     <p> All you need to do is sign in to avail </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/login" role="button">Sign In</a>
+        <a class="btn btn-primary btn-lg" href="/login" role="button">Learn more</a>
       </p>
   </div>
 

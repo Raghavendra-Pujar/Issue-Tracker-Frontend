@@ -48,7 +48,7 @@ public verifyEmail(){
   //let email = this.assignee;
   $.ajax({
     type: 'POST',
-    url : 'http://localhost:3000/api/v1/users/verifyEmail',
+    url : 'http://restapi.raghavendra-pujar.site/api/v1/users/verifyEmail',
     data: {email : this.issue.assignee.email},
     dataType : "json",
     success :function(data){

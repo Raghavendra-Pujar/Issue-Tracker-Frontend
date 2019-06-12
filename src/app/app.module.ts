@@ -25,6 +25,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { NotFoundModule } from './not-found/not-found.module';
 import { LoginCheckService } from './login-check.service';
+import { FeaturesComponent } from './features/features/features.component';
+import { FeaturesModule } from './features/features.module';
 
 let config = new AuthServiceConfig([
   {
@@ -32,6 +34,9 @@ let config = new AuthServiceConfig([
     provider: new GoogleLoginProvider("951167059862-cdtqjun6mr3rpfdit16okgf3ve2mgnjq.apps.googleusercontent.com")
   }
 ]);
+export function provideConfig() {
+  return config;
+}
 
 
 @NgModule({
@@ -48,9 +53,10 @@ let config = new AuthServiceConfig([
     SearchViewModule,
     IssueDescriptionModule,
     NotFoundModule,
+    FeaturesModule,
     CKEditorModule,
     Ng2OrderModule,
-    SocialLoginModule.initialize(config),
+    SocialLoginModule,
     ToastrModule.forRoot(),
     SweetAlert2Module.forRoot(),
     RouterModule.forRoot([
@@ -58,12 +64,17 @@ let config = new AuthServiceConfig([
       { path : '', redirectTo: 'login', pathMatch : 'full'},
       {path : 'dashboard', component : DescriptionComponent, pathMatch : 'full'},
       { path :'issue', component : DescriptionComponent, pathMatch : 'full'},
+      { path : 'features',component : FeaturesComponent, pathMatch : 'full'},
       { path : 'search/:searchText', component : SearchComponent, pathMatch : 'full'},
       {path:'**',component:NotFoundComponent},
       { path : '*', component: LoginComponent}
     ])
   ],
-  providers: [ApiServiceService,SocketService,LoginCheckService],
+  providers: [ApiServiceService,SocketService,LoginCheckService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
