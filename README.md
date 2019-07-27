@@ -2,26 +2,64 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.6.
 
-## Development server
+Project Description This project should be a ready to deploy, Issue Tracking Tool. It must have all the features mentioned below and it must be deployed on a server before submission. You are allowed to use any kind of modules, libraries and tool you want. Features of the platform-
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Login View
 
-## Code scaffolding
+Personalized Dashboard View
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Issue description view
 
-## Build
+Search view
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Login View
 
-## Running unit tests
+User should be able to login to the system through his username/password or social logins.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+User should be able to register also.
 
-## Running end-to-end tests
+Upon login, user should land on his Personalized Dashboard View.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Personalized Dashboard View A table showing all issues currently assigned to logged-in user. It should have following columns.
 
-## Further help
+Status : current status of the issue. It can be in backlog, in- progress, in-test, done.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Title: Title of the bug.
+
+Reporter: User who reported the bug
+
+Date: Date when this bug was reported.
+
+A search box where, User should be able to search for an issue, which would open Search View.
+
+A create button: To log a new issue. On clicking, user should be taken to issue description view.
+
+NOTE:
+
+Table should be paginated
+
+Table should have sorting on columns
+
+User should be able to filter rows based on any columns.
+
+Upon clicking on any row, it’s Issue Description View, should open.
+
+Issue description view:
+
+Here user(Reporter) should be able to add/edit title of issue, Description of issue, add/edit any related attachments, like screenshots. Description Box should be a rich text editor having options like font styling, underline etc. You may use any open source library for this.
+
+Any user, including reporter and assignee, should be able to assign this issue, to any another user (called assignee, hereafter). Any user should be able to make changes to this issue.
+
+Also, there should be a comments section, where any user, should be able to make comments around this issue.
+
+Further, Any user should be able to add himself, as watcher, to this issue. A button called "Watch" should be there, for this. List of watchers should also show. All watchers, assignee and reporter, should receive notifications, for any changes or comments on this issue.
+
+Notification should come on screen, having a short description of what changed, Also, when clicked on notification, user should land on the Issue Description View of related issue.
+
+Search view
+
+User should be able to search for any text.
+
+User should be shown a results table, having all the issues related to the search text.
+
+This table will be similar to the table in Personalized Dashboard View.
